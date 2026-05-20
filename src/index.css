@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Source Sans 3', sans-serif; color: #1f2937; background: #ffffff; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+}
+
+@layer components {
+  .btn-primary { @apply inline-flex items-center gap-2 bg-orange-600 hover:bg-orange-700 text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5; }
+  .btn-secondary { @apply inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full border border-white/30 transition-all duration-300; }
+  .btn-outline { @apply inline-flex items-center gap-2 border-2 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300; }
+  .section-title { font-family: 'Playfair Display', serif; @apply text-4xl md:text-5xl font-bold text-gray-900 leading-tight; }
+  .card { @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden; }
+  .gradient-text { @apply bg-gradient-to-r from-orange-600 to-yellow-500 bg-clip-text text-transparent; }
+  .section-padding { @apply py-20 md:py-28; }
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #e05707; border-radius: 3px; }
+
+* { scroll-margin-top: 80px; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.animate-float { animation: float 5s ease-in-out infinite; }
+.animate-float-delay { animation: float 5s ease-in-out infinite 1.5s; }
+.animate-float-delay2 { animation: float 5s ease-in-out infinite 3s; }
+
+.hero-overlay {
+  background: linear-gradient(135deg, rgba(20,10,5,0.78) 0%, rgba(60,20,5,0.55) 50%, rgba(20,10,5,0.72) 100%);
+}
+
+.glass {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.glass-dark {
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.img-placeholder {
+  background: linear-gradient(135deg, #fdecd3 0%, #f8f0e6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
