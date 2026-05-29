@@ -13,6 +13,9 @@ import GalleryPage from './pages/GalleryPage';
 import WishlistPage from './pages/WishlistPage';
 import SponsorshipPage from './pages/SponsorshipPage';
 import ContactPage from './pages/ContactPage';
+import BioPage from './pages/BioPage';
+import SpiritualGuidancePage from './pages/SpiritualGuidancePage';
+import VolunteerPage from './pages/VolunteerPage';
 
 function ScrollRestoration() {
   const { pathname } = useLocation();
@@ -48,7 +51,10 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/bio" element={<BioPage />} />
+            <Route path="/volunteer" element={<VolunteerPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/spiritual-guidance" element={<SpiritualGuidancePage />} />
             <Route path="/donate" element={<DonatePage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/gallery" element={<GalleryPage />} />

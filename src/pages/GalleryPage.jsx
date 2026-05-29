@@ -8,10 +8,11 @@ import { galleryItems as realGalleryItems } from '../data/galleryData';
 
 const categories = [
   'All',
+  'Phenomenal Woman Award',
+  '20 Years Celebration',
   'Community Outreach',
   'Food Pantry',
   'Volunteer Work',
-  '20 Years Celebration',
   'Nigeria Outreach',
   'Kenya Outreach',
   'Pakistan Outreach',
@@ -23,6 +24,7 @@ const categories = [
 // Combine real gallery items with placeholder items for other categories
 const generateGalleryItems = () => {
   const placeholderItems = {
+    'Phenomenal Woman Award': ['Award Ceremony', 'Recognition Event', 'Marlene Honored', 'Award Presentation', 'Celebration Moment'],
     'Community Outreach': ['Community Service', 'Neighborhood Support', 'Local Outreach', 'Community Together', 'Service Drive', 'Community Day'],
     'Food Pantry': ['Food Distribution', 'Pantry Shelves', 'Grocery Bags', 'Fresh Produce', 'Family Pickup', 'Volunteers Sorting'],
     'Nigeria Outreach': ['Nigeria Mission', 'Nigeria Community', 'Nigeria Feeding', 'Nigeria Children', 'Nigeria Women', 'Nigeria Support'],
@@ -224,3 +226,6 @@ export default function GalleryPage() {
     </>
   );
 }
+
+
+

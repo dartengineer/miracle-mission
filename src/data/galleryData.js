@@ -1,5 +1,48 @@
 // Gallery Data - Maps actual images from public folder
 export const galleryItems = [
+    // Phenomenal Woman Award
+    {
+        id: 'phenomenal_1',
+        category: 'Phenomenal Woman Award',
+        label: 'Phenomenal Woman Award Ceremony',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.34 PM.jpeg',
+        size: 'large',
+    },
+    {
+        id: 'phenomenal_2',
+        category: 'Phenomenal Woman Award',
+        label: 'Award Recognition',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.35 PM.jpeg',
+        size: 'normal',
+    },
+    {
+        id: 'phenomenal_3',
+        category: 'Phenomenal Woman Award',
+        label: 'Marlene Honored',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.36 PM (1).jpeg',
+        size: 'normal',
+    },
+    {
+        id: 'phenomenal_4',
+        category: 'Phenomenal Woman Award',
+        label: 'Award Presentation',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.36 PM.jpeg',
+        size: 'wide',
+    },
+    {
+        id: 'phenomenal_5',
+        category: 'Phenomenal Woman Award',
+        label: 'Celebrating Excellence',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.37 PM.jpeg',
+        size: 'normal',
+    },
+    {
+        id: 'phenomenal_6',
+        category: 'Phenomenal Woman Award',
+        label: 'Community Celebration',
+        image: '/phenomenal_woman_award/WhatsApp Image 2026-05-24 at 9.13.38 PM.jpeg',
+        size: 'normal',
+    },
     // 20 Years Celebration
     {
         id: '20years_1',
