@@ -76,12 +76,16 @@ function EventCard({ event, index }) {
       className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all border border-gray-100"
     >
       <div className={`grid grid-cols-1 lg:grid-cols-2 ${!isEven ? 'lg:grid-flow-dense' : ''}`}>
-        {/* Image */}
+        {/* Calendar Box */}
         <div className={!isEven ? 'lg:col-start-2' : ''}>
-          <div className="relative h-64 lg:h-full min-h-64">
-            <img src="./20_years_celebration/WhatsApp Image 2026-05-16 at 4.26.52 AM (3).jpeg" alt={event.title} className="absolute inset-0 w-full h-full object-cover" />
-            <div className={`absolute top-4 left-4 bg-gradient-to-br ${event.gradient} text-white px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide`}>
-              {event.month} Event
+          <div className={`relative h-64 lg:h-full min-h-64 bg-gradient-to-br ${event.gradient} flex items-center justify-center`}>
+            <div className="text-center">
+              <div className="text-7xl font-bold text-white/80 font-display mb-2">
+                {event.shortMonth.slice(0, 1)}
+              </div>
+              <div className="text-white/60 text-sm font-semibold uppercase tracking-widest">
+                {event.shortMonth}
+              </div>
             </div>
           </div>
         </div>

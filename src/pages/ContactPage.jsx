@@ -11,6 +11,15 @@ const contactInfo = [
   { icon: Phone, title: 'Phone / Zelle', lines: ['404-454-9854'], link: 'tel:4044549854', linkLabel: 'Call Now' },
 ];
 
+const internationalContacts = [
+  { name: 'Evangelist Eva Tahir', role: 'Pakistan Leader', phone: '+92 318 6312273', country: '🇵🇰' },
+  { name: 'Evangelist Imran Masih', role: 'Pakistan Coordinator', phone: '+92 308 8678466', country: '🇵🇰' },
+  { name: 'Bishop Naeem Essa', role: 'Pakistan Spiritual Advisor', phone: '+92 307 8767190', country: '🇵🇰' },
+  { name: 'Bishop David Nyriki', role: 'Kenya Leader', phone: '+254 794 736769', country: '🇰🇪' },
+  { name: 'Pastor Kevin Nyabuto', role: 'Kenya Coordinator', phone: '+254 717 29438', country: '🇰🇪' },
+  { name: 'Pastor Reuben', role: 'Kenya Coordinator', phone: '+254 725 207 387', country: '🇰🇪' },
+];
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -22,7 +31,7 @@ export default function ContactPage() {
         <meta name="description" content="Contact Miracle Mission at 466 Simpson Street, McDonough, GA. Open Thursday and Friday 10am-2pm." />
       </Helmet>
       <PageHeader title="Contact Us" subtitle="We'd love to hear from you. Reach out for help, volunteering, or partnership opportunities." breadcrumb="Home > Contact" />
-      
+
       <section className="py-12 bg-orange-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -135,6 +144,73 @@ export default function ContactPage() {
                   <p className="text-orange-100 text-sm mb-3">Visit us during service hours. No appointment needed for food pantry or clothing services.</p>
                   <div className="flex items-center gap-2"><MapPin className="w-4 h-4 text-orange-300" /><span className="text-sm font-semibold">466 Simpson Street, McDonough, GA</span></div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* International Contacts */}
+      <section className="section-padding" style={{ background: '#fdfaf7' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-3 block">Global Network</span>
+            <h2 className="section-title">International Contacts</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4">Connect with our regional leaders and coordinators in Pakistan and Kenya.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Pakistan */}
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-4xl">🇵🇰</span>
+                <div>
+                  <h3 className="font-display font-bold text-2xl text-gray-900">Pakistan</h3>
+                  <p className="text-orange-600 text-sm font-medium">South Asia</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {internationalContacts.filter(c => c.country === '🇵🇰').map((contact, i) => (
+                  <div key={contact.name} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-semibold text-gray-900">{contact.name}</h4>
+                        <p className="text-gray-600 text-sm">{contact.role}</p>
+                      </div>
+                    </div>
+                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-orange-600 hover:text-orange-700 font-semibold text-sm mt-2 flex items-center gap-2 group">
+                      <Phone className="w-4 h-4" />
+                      {contact.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Kenya */}
+            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-4xl">🇰🇪</span>
+                <div>
+                  <h3 className="font-display font-bold text-2xl text-gray-900">Kenya</h3>
+                  <p className="text-orange-600 text-sm font-medium">East Africa</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {internationalContacts.filter(c => c.country === '🇰🇪').map((contact, i) => (
+                  <div key={contact.name} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-semibold text-gray-900">{contact.name}</h4>
+                        <p className="text-gray-600 text-sm">{contact.role}</p>
+                      </div>
+                    </div>
+                    <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} className="text-orange-600 hover:text-orange-700 font-semibold text-sm mt-2 flex items-center gap-2 group">
+                      <Phone className="w-4 h-4" />
+                      {contact.phone}
+                    </a>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

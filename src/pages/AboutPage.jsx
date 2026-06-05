@@ -27,25 +27,27 @@ const timeline = [
 ];
 
 const boardMembers = [
-  { name: 'Marlene Lemons', role: 'Chairperson' },
-  { name: 'Bernorsey Lemons', role: 'GM, IKEA' },
-  { name: 'Patricia Gusta', role: 'Secretary' },
-  { name: 'Judge Holly Veal', role: 'Board Member' },
-  { name: 'Former Commissioner Vivian Thomas', role: 'Board Member' },
-  { name: 'Isaiah Stephenson', role: 'Retired Federal Justice System' },
-  { name: 'Vincent Williams', role: 'Former Mayor / House of Representative' },
-  { name: 'Requel Evans', role: 'State of Georgia' },
-  { name: 'Javier Smith', role: 'Fraternity Representative' },
-  { name: 'Dr. Debra Sykes', role: 'Entrepreneur / VP Tucker Veteran\'s Disability Services / CEO Home Plus Care' },
-  { name: 'Kevin Lynfatt', role: 'Entrepreneur' },
-  { name: 'William Gavin, LLC', role: 'Board Member' },
+  { name: 'Marlene Lemons', role: 'Executive Director / Founder', image: '' },
+  { name: 'Bernorsey Lemons', role: 'Manager at IKEA', image: '/executives/Bernorsey Lemons, Manager at IKEA.png' },
+  { name: 'Patricia Gusta', role: 'Secretary', image: '/executives/Patricia Gusta, Secretary, Board Member.jpeg' },
+  { name: 'Holly Veal', role: 'Superior Court Judge', image: '/executives/Holly Veal, Superior Court Judge.jpeg' },
+  { name: 'Vivian Thomas', role: 'Former Commissioner of McDonough, GA', image: '/executives/Vivian Thomas, Former Commissioner of McDonough, Ga. (board member).jpeg' },
+  { name: 'Isaiah Stevenson', role: 'Retired Federal Justice System', image: '/executives/Isaiah Stevenson, Retired Federal Justice System (Board member).png' },
+  { name: 'Vincent Williams', role: 'State Representative District 1', image: '/executives/Vincent Williams, State Representative District 1, (Board Member).png' },
+  { name: 'Requel Evans', role: 'State of Georgia', image: '/executives/Requel Evans, State of Georgia (Board Member).jpeg' },
+  { name: 'Javier Smith', role: 'Smith Family Foundation for Change Inc.', image: '/executives/Javier Smith,  Smith Family Foundation for Change Inc. (Board Member).jpeg' },
+  { name: 'Dr. Debra Sykes', role: 'VP Tucker Veteran\'s Disability Services', image: '/executives/Dr. Debra Sykes, VP of Tucker Veteran\'s Disability (board member).jpeg' },
+  { name: 'Kevin Lynfatt', role: 'William Gavin Management, LLC', image: '/executives/Kevin Lynfatt, William Gavin Management, LLC (Board Member).jpeg' },
+  { name: 'Bishop David Nyriki', role: 'Spiritual Advisor', image: '/executives/Bishop David Nyriki.jpeg' },
+  { name: 'Bishop Naeem Essa', role: 'Spiritual Advisor', image: '/executives/Bishop Naeem Essa.jpeg' },
+  { name: 'Evangelist Bernice Duffie', role: 'Outreach Coordinator', image: '/executives/Evangelist Bernice Duffie, Outreach Coordinator.jpeg' },
+  { name: 'Evangelist Eva Tahir', role: 'Pakistan Outreach Coordinator', image: '/executives/Evangelist Eva Tahir Pakistan.jpeg' },
 ];
 
-const officers = [
-  { name: 'Marlene G. Lemons', role: 'Executive Director / Founder' },
-  { name: 'Djery Princival', role: 'Volunteer Coordinator' },
-  { name: 'Clarice Bass', role: 'Administrator' },
-];
+// const officers = [
+//   { name: 'Evangelist Bernice Duffie', role: 'Outreach Coordinator', image: '/executives/Evangelist Bernice Duffie, Outreach Coordinator.jpeg' },
+//   { name: 'Evangelist Eva Tahir', role: 'Pakistan Outreach Coordinator', image: '/executives/Evangelist Eva Tahir Pakistan.jpeg' },
+// ];
 
 function SectionRef({ children, className = '' }) {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
@@ -173,14 +175,6 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <SectionRef>
               <div className="sticky top-24">
-                <div className="relative">
-                  <img src="/20_years_celebration/WhatsApp Image 2026-05-16 at 4.26.24 AM.jpeg" alt="Evangelist Marlene G. Lemons — Founder & Executive Director" className="aspect-[3/4] object-cover rounded-3xl shadow-2xl max-w-sm mx-auto" />
-                  <div className="absolute -bottom-6 -right-6 bg-orange-600 text-white p-5 rounded-2xl shadow-xl hidden md:block">
-                    <div className="font-display text-2xl font-bold">20+</div>
-                    <div className="text-orange-200 text-xs">Years of Dedication</div>
-                  </div>
-                </div>
-
                 <div className="mt-10 grid grid-cols-2 gap-4">
                   {[
                     { label: 'GED Achievement', icon: GraduationCap },
@@ -290,28 +284,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-16">
             {boardMembers.map((member, i) => (
               <SectionRef key={member.name} className="card p-5 text-center hover:-translate-y-1">
-                <img src={`/volunteer_work/WhatsApp Image 2026-05-16 at 4.24.${38 + (i % 3)}.jpeg`} alt={member.name} className="aspect-square object-cover rounded-full w-24 h-24 mx-auto mb-4 overflow-hidden" onError={(e) => e.target.style.display = 'none'} />
+                <img src={member.image} alt={member.name} className="aspect-square object-cover rounded-full w-24 h-24 mx-auto mb-4 overflow-hidden" onError={(e) => e.target.style.display = 'none'} />
                 <h4 className="font-display font-bold text-gray-900 text-base mb-1">{member.name}</h4>
                 <p className="text-orange-600 text-xs font-medium leading-snug">{member.role}</p>
               </SectionRef>
             ))}
           </div>
 
-          {/* Officers */}
-          <div className="text-center mb-10">
-            <span className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-3 block">Staff Leadership</span>
-            <h2 className="font-display text-3xl font-bold text-gray-900">Officers &amp; Staff</h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            {officers.map((officer, i) => (
-              <SectionRef key={officer.name} className="card p-6 text-center hover:-translate-y-1">
-                <img src={`/volunteer_work/WhatsApp Image 2026-05-16 at 4.24.${40 + (i % 2)}.jpeg`} alt={officer.name} className="aspect-square object-cover rounded-full w-28 h-28 mx-auto mb-4 overflow-hidden" onError={(e) => e.target.style.display = 'none'} />
-                <h4 className="font-display font-bold text-gray-900 text-lg mb-1">{officer.name}</h4>
-                <p className="text-orange-600 text-sm font-medium">{officer.role}</p>
-              </SectionRef>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -328,13 +308,17 @@ export default function AboutPage() {
             {[
               { country: 'Nigeria', flag: '🇳🇬', desc: 'Supporting communities across Nigeria with food distribution, educational programs, and women\'s empowerment initiatives.', stats: '1,200+ Families', imgs: ['Nigeria Outreach', 'Nigeria Community', 'Nigeria Feeding'] },
               { country: 'Kenya', flag: '🇰🇪', desc: 'Partnering with local organizations in Kenya to provide hunger relief, clean water access, and community development.', stats: '800+ Families', imgs: ['Kenya Outreach', 'Kenya Programs', 'Kenya Children'] },
-              { country: 'Pakistan', flag: '🇵🇰', desc: 'Reaching underserved communities in Pakistan through food aid, educational support, and community empowerment programs.', stats: '600+ Families', imgs: ['Pakistan Outreach', 'Pakistan Community', 'Pakistan Programs'] },
+              { country: 'Pakistan', flag: '🇵🇰', desc: 'Reaching underserved communities in Pakistan through food aid, educational support, and community empowerment programs.', stats: '600+ Families', imgs: ['Pakistan Outreach', 'Pakistan outreach 2', 'Pakistan outreach 3'] },
             ].map((c, i) => (
               <SectionRef key={c.country} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl overflow-hidden">
                 <div className="grid grid-cols-3 gap-1 p-2">
-                  {c.imgs.map((img, j) => (
-                    <img key={j} src={`/global_outreach/${img.replace(/\s+/g, '_').toLowerCase()}.jpg`} alt={img} className="aspect-square object-cover rounded-xl" onError={(e) => e.target.style.display = 'none'} />
-                  ))}
+                  {c.imgs.map((img, j) => {
+                    const folderMap = { 'Nigeria': 'global_outreach', 'Kenya': 'global_outreach', 'Pakistan': 'pakistan_outreach' };
+                    const folder = folderMap[c.country];
+                    return (
+                      <img key={j} src={`/${folder}/${img}.jpeg`} alt={img} className="aspect-square object-cover rounded-xl" onError={(e) => e.target.style.display = 'none'} />
+                    );
+                  })}
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">

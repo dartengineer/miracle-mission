@@ -5,9 +5,9 @@ import ImgPlaceholder from '../ui/ImgPlaceholder';
 import { Link } from 'react-router-dom';
 
 const countries = [
-  { name: 'Nigeria', flag: '🇳🇬', region: 'West Africa', desc: 'Providing food, education, and community support to families across Nigeria.', families: '1,200+' },
-  { name: 'Kenya', flag: '🇰🇪', region: 'East Africa', desc: 'Outreach programs focused on hunger relief and community empowerment in Kenya.', families: '800+' },
-  { name: 'Pakistan', flag: '🇵🇰', region: 'South Asia', desc: 'Supporting underserved communities through food distribution and educational initiatives.', families: '600+' },
+  { name: 'Nigeria', flag: '🇳🇬', region: 'West Africa', desc: 'Providing food, education, and community support to families across Nigeria.', families: '1,200+', img: null },
+  { name: 'Kenya', flag: '🇰🇪', region: 'East Africa', desc: 'Outreach programs focused on hunger relief and community empowerment in Kenya.', families: '800+', img: null },
+  { name: 'Pakistan', flag: '🇵🇰', region: 'South Asia', desc: 'Supporting underserved communities through food distribution and educational initiatives.', families: '600+', img: '/pakistan_outreach/Pakistan Outreach.jpeg' },
 ];
 
 export default function GlobalOutreach() {
@@ -34,7 +34,11 @@ export default function GlobalOutreach() {
               className="card group hover:-translate-y-1"
             >
               <div className="relative">
-                <ImgPlaceholder label={`${c.name} Outreach`} aspectRatio="aspect-[4/3]" />
+                {c.img ? (
+                  <img src={c.img} alt={`${c.name} Outreach`} className="w-full aspect-[4/3] object-cover rounded-2xl" />
+                ) : (
+                  <ImgPlaceholder label={`${c.name} Outreach`} aspectRatio="aspect-[4/3]" />
+                )}
                 <div className="absolute top-4 left-4">
                   <div className="glass text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
                     <Globe className="w-3 h-3" />

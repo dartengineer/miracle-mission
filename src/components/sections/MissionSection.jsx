@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
-import ImgPlaceholder from '../ui/ImgPlaceholder';
 import { CheckCircle, Heart, ArrowRight } from 'lucide-react';
 
 const values = ['Integrity', 'Compassion', 'Respect', 'Fairness', 'Professionalism'];
@@ -20,9 +19,9 @@ export default function MissionSection() {
             transition={{ duration: 0.7 }}
             className="grid grid-cols-2 gap-4"
           >
-            <ImgPlaceholder label="Community Outreach" aspectRatio="aspect-[3/4]" className="rounded-2xl col-span-1 row-span-2" />
-            <ImgPlaceholder label="Food Pantry" aspectRatio="aspect-square" className="rounded-2xl" />
-            <ImgPlaceholder label="Volunteer Team" aspectRatio="aspect-square" className="rounded-2xl" />
+            <img src="/pakistan_outreach/Pakistan Outreach.jpeg" alt="Community Outreach" className="aspect-[3/4] object-cover rounded-2xl col-span-1 row-span-2" />
+            <img src="/food_pantry/pantry.jpg" alt="Food Pantry" className="aspect-square object-cover rounded-2xl" />
+            <img src="/volunteer_work/WhatsApp Image 2026-05-16 at 4.24.38 AM.jpeg" alt="Volunteer Team" className="aspect-square object-cover rounded-2xl" />
           </motion.div>
 
           {/* Content */}
