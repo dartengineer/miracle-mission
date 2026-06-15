@@ -44,6 +44,16 @@ const boardMembers = [
   { name: 'Evangelist Eva Tahir', role: 'Pakistan Outreach Coordinator', image: '/executives/Evangelist Eva Tahir Pakistan.jpeg' },
 ];
 
+const teamMembers = [
+  { name: 'Evangelist Bernice Duffie', role: 'Outreach Coordinator', image: '/team_member_position/Evangelist Bernice Duffie.jpeg' },
+  { name: 'Mattie Smith', role: 'Team Captain', image: '/team_member_position/Mattie Smith, Team Captain.jpeg' },
+  { name: 'Ursula Garrett', role: 'Secretary', image: '/team_member_position/Ursula Garrett, Secretary.jpeg' },
+  { name: 'Phyllis Parks', role: 'Credit Repairer', image: '/team_member_position/Phyllis Parks, Credit Repairer.jpeg' },
+  { name: 'Sharon Weems', role: 'Outreach Minister Assistant', image: '/team_member_position/Sharon Weems, Outreach Minister Assistant.jpeg' },
+  { name: 'Evangelist Rosalyn Barnes', role: 'Fundraiser Coordinator', image: '/team_member_position/Evangelist Rosalyn Barnes. fundraiser coordinator.jpeg' },
+  { name: 'ALFRED PETER', role: 'Head of Digital Media and Communications', image: '/team_member_position/ALFRED PETER.jpeg' },
+];
+
 // const officers = [
 //   { name: 'Evangelist Bernice Duffie', role: 'Outreach Coordinator', image: '/executives/Evangelist Bernice Duffie, Outreach Coordinator.jpeg' },
 //   { name: 'Evangelist Eva Tahir', role: 'Pakistan Outreach Coordinator', image: '/executives/Evangelist Eva Tahir Pakistan.jpeg' },
@@ -290,8 +300,27 @@ export default function AboutPage() {
               </SectionRef>
             ))}
           </div>
+        </div>
+      </section>
 
+      {/* Team Members & Positions */}
+      <section className="section-padding" style={{ background: '#fdfaf7' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-3 block">Our Team</span>
+            <h2 className="section-title">Team Members &amp; Positions</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4">Meet the dedicated individuals who serve on our team to carry out our mission every day.</p>
+          </div>
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {teamMembers.map((member, i) => (
+              <SectionRef key={member.name} className="card p-5 text-center hover:-translate-y-1">
+                <img src={member.image} alt={member.name} className="aspect-square object-cover rounded-full w-24 h-24 mx-auto mb-4 overflow-hidden" onError={(e) => e.target.style.display = 'none'} />
+                <h4 className="font-display font-bold text-gray-900 text-base mb-1">{member.name}</h4>
+                <p className="text-orange-600 text-xs font-medium leading-snug">{member.role}</p>
+              </SectionRef>
+            ))}
+          </div>
         </div>
       </section>
 
