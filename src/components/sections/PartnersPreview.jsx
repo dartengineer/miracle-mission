@@ -9,6 +9,14 @@ const partners = [
   'Henry County Juvenile Court',
   'Phi Beta Sigma Eta Fraternity',
   'Woodland Middle School',
+  'Publix',
+  'Kroger',
+  'Central Georgia EMC',
+  'Home Depot SDC 5149',
+  'Sigma ETA Sigma Phi Beta Fraternity',
+  'United Pentecostal Church',
+  'White Funeral Services',
+  'Eric Levels',
 ];
 
 export default function PartnersPreview() {
