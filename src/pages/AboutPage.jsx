@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useState } from 'react';
 import PageHeader from '../components/ui/PageHeader';
 import ImgPlaceholder from '../components/ui/ImgPlaceholder';
+import { ImageLightbox } from '../components/ui/GalleryComponents';
 import { CheckCircle, Award, GraduationCap, Globe, Heart, Users, Star, BookOpen, ChevronRight } from 'lucide-react';
 
 const values = [
@@ -46,7 +48,7 @@ const boardMembers = [
 
 const teamMembers = [
   { name: 'Evangelist Bernice Duffie', role: 'Outreach Coordinator', image: '/team_member_position/Evangelist Bernice Duffie.jpeg' },
-  { name: 'Mattie Smith', role: 'Team Captain', image: '/team_member_position/Mattie Smith, Team Captain.jpeg' },
+  { name: 'Mattie Smith', role: 'Operations Support', image: '/team_member_position/Mattie Smith, Team Captain.jpeg' },
   { name: 'Ursula Garrett', role: 'Secretary', image: '/team_member_position/Ursula Garrett, Secretary.jpeg' },
   { name: 'Phyllis Parks', role: 'Credit Repairer', image: '/team_member_position/Phyllis Parks, Credit Repairer.jpeg' },
   { name: 'Sharon Weems', role: 'Outreach Minister Assistant', image: '/team_member_position/Sharon Weems, Outreach Minister Assistant.jpeg' },
@@ -71,6 +73,47 @@ function SectionRef({ children, className = '' }) {
     >
       {children}
     </motion.div>
+  );
+}
+
+function HorizontalBiggerPicture() {
+  const images = [
+    { src: '/the_bigger_picture/WhatsApp Image 2026-06-18 at 8.30.02 AM (1).jpeg', alt: 'Bigger picture 1' },
+    { src: '/the_bigger_picture/WhatsApp Image 2026-06-18 at 8.30.02 AM.jpeg', alt: 'Bigger picture 2' },
+    { src: '/the_bigger_picture/WhatsApp Image 2026-06-18 at 8.30.03 AM (1).jpeg', alt: 'Bigger picture 3' },
+    { src: '/the_bigger_picture/WhatsApp Image 2026-06-18 at 8.30.03 AM.jpeg', alt: 'Bigger picture 4' },
+  ];
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [current, setCurrent] = useState(0);
+
+  const openAt = (i) => { setCurrent(i); setIsOpen(true); };
+  const close = () => setIsOpen(false);
+  const next = () => setCurrent((c) => Math.min(c + 1, images.length - 1));
+  const prev = () => setCurrent((c) => Math.max(c - 1, 0));
+
+  return (
+    <>
+      <div className="overflow-x-auto">
+        <div className="flex gap-4 pb-4">
+          {images.map((img, i) => (
+            <button key={img.src} onClick={() => openAt(i)} className="shrink-0 focus:outline-none">
+              <img src={img.src} alt={img.alt} className="w-64 h-40 object-cover rounded-2xl shadow-md hover:scale-105 transition-transform" onError={(e) => e.target.style.display = 'none'} />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <ImageLightbox
+        image={images[current]}
+        isOpen={isOpen}
+        onClose={close}
+        onNext={next}
+        onPrev={prev}
+        hasNext={current < images.length - 1}
+        hasPrev={current > 0}
+      />
+    </>
   );
 }
 
@@ -128,6 +171,20 @@ export default function AboutPage() {
               </div>
             </SectionRef>
           </div>
+        </div>
+      </section>
+
+      {/* The Bigger Picture - horizontal gallery */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <span className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-3 block">The Bigger Picture</span>
+            <h2 className="section-title">The Bigger Picture</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4">Browse images from our outreach and events. Click any image to read through them.</p>
+          </div>
+
+          {/* Horizontal scroll strip */}
+          <HorizontalBiggerPicture />
         </div>
       </section>
 
