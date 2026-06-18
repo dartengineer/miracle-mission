@@ -180,7 +180,7 @@ export default function AboutPage() {
           <div className="text-center mb-8">
             <span className="text-orange-600 font-bold text-sm uppercase tracking-widest mb-3 block">The Bigger Picture</span>
             <h2 className="section-title">The Bigger Picture</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mt-4">Browse images from our outreach and events. Click any image to read through them.</p>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-4">Click any image to read through them.</p>
           </div>
 
           {/* Horizontal scroll strip */}
