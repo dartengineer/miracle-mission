@@ -3,10 +3,10 @@ import PageHeader from '../components/ui/PageHeader';
 import ImgPlaceholder from '../components/ui/ImgPlaceholder';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Heart, DollarSign, Smartphone, CreditCard, Users, Clock, CheckCircle, ArrowRight, Star } from 'lucide-react';
+import { Users, Clock, Star } from 'lucide-react';
 
 const donationAmounts = [10, 25, 50, 100, 250, 500];
+
 
 const impactItems = [
   { amount: '$10', impact: 'Feeds one person for a week with essential nutrition' },
@@ -30,6 +30,20 @@ function DonateForm() {
   const [selected, setSelected] = useState(50);
   const [custom, setCustom] = useState('');
   const [recurring, setRecurring] = useState(false);
+  const [copied, setCopied] = useState('');
+
+  const handleCopy = async (text, type) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(type);
+
+      setTimeout(() => {
+        setCopied('');
+      }, 2000);
+    } catch (err) {
+      console.error('Copy failed:', err);
+    }
+  };
 
   return (
     <div className="bg-white rounded-3xl shadow-xl p-8">
@@ -43,8 +57,8 @@ function DonateForm() {
             key={f}
             onClick={() => setRecurring(f === 'Monthly')}
             className={`flex-1 py-3 rounded-xl text-sm font-semibold border-2 transition-all ${(f === 'Monthly') === recurring
-                ? 'bg-orange-600 text-white border-orange-600'
-                : 'text-gray-700 border-gray-200 hover:border-orange-300'
+              ? 'bg-orange-600 text-white border-orange-600'
+              : 'text-gray-700 border-gray-200 hover:border-orange-300'
               }`}
           >
             {f}
@@ -59,8 +73,8 @@ function DonateForm() {
             key={amt}
             onClick={() => { setSelected(amt); setCustom(''); }}
             className={`py-3 rounded-xl text-sm font-bold border-2 transition-all ${selected === amt && !custom
-                ? 'bg-orange-600 text-white border-orange-600 shadow-lg'
-                : 'text-gray-700 border-gray-200 hover:border-orange-300'
+              ? 'bg-orange-600 text-white border-orange-600 shadow-lg'
+              : 'text-gray-700 border-gray-200 hover:border-orange-300'
               }`}
           >
             ${amt}
@@ -94,32 +108,74 @@ function DonateForm() {
 
       {/* Payment methods */}
       <div className="space-y-3 mb-6">
-        <p className="text-sm font-bold text-gray-700 uppercase tracking-wide">Donate Via:</p>
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { label: 'Cash App', value: '$MiracleMission24', color: 'bg-green-50 border-green-200 text-green-700' },
-            { label: 'Zelle', value: '404-454-9854', color: 'bg-blue-50 border-blue-200 text-blue-700' },
-            { label: 'PayPal', value: 'via link', color: 'bg-indigo-50 border-indigo-200 text-indigo-700' },
-          ].map((m) => (
-            <div key={m.label} className={`border rounded-xl p-3 text-center ${m.color}`}>
-              <div className="font-bold text-xs">{m.label}</div>
-              <div className="text-xs mt-0.5 font-medium opacity-75">{m.value}</div>
+        <p className="text-sm font-bold text-gray-700 uppercase tracking-wide">
+          Choose a Donation Method
+        </p>
+
+        <div className="grid gap-4">
+
+          {/* PayPal */}
+          <a
+            href="https://www.paypal.com/US/fundraiser/charity/1946942"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block border rounded-2xl p-5 hover:border-orange-500 hover:shadow-lg transition"
+          >
+            <h4 className="font-bold text-lg">PayPal</h4>
+
+            <p className="text-gray-600 mt-2">
+              Donate securely using PayPal or your debit/credit card.
+            </p>
+
+            <button
+              type="button"
+              className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold"
+            >
+              Open PayPal
+            </button>
+          </a>
+          {/* Cash App */}
+          <div className="border rounded-2xl p-5">
+            <h4 className="font-bold text-lg">Cash App</h4>
+
+            <div className="mt-3">
+              <p className="text-sm text-gray-500">Cash App Tag</p>
+              <p className="font-bold text-lg">$MiracleMission24</p>
             </div>
-          ))}
+
+            <button
+              onClick={() => handleCopy("$MiracleMission24", "cashapp")}
+              className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
+            >
+              {copied === "cashapp" ? "✅ Copied!" : "Copy Cash App Tag"}
+            </button>
+          </div>
+
+          {/* Zelle */}
+          <div className="border rounded-2xl p-5">
+            <h4 className="font-bold text-lg">Zelle</h4>
+
+            <div className="mt-3">
+              <p className="text-sm text-gray-500">Send to</p>
+              <p className="font-bold">404-454-9854</p>
+            </div>
+
+            <button
+              onClick={() => handleCopy("404-454-9854", "zelle")}
+              className="mt-4 bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition"
+            >
+              {copied === "zelle" ? "✅ Copied!" : "Copy Zelle Number"}
+            </button>
+          </div>
         </div>
       </div>
-
-      <button className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl transition-colors shadow-lg flex items-center justify-center gap-2 text-base">
-        <Heart className="w-5 h-5 fill-white" />
-        Donate Now
-      </button>
-
       <p className="text-center text-gray-400 text-xs mt-4">
         Miracle Mission International Outreach Inc · 501(c)(3) · EIN available upon request
       </p>
     </div>
   );
 }
+
 
 function VolunteerForm() {
   return (

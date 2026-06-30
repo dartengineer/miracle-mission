@@ -8,8 +8,7 @@ import EventsPreview from '../components/sections/EventsPreview';
 import GlobalOutreach from '../components/sections/GlobalOutreach';
 import PartnersPreview from '../components/sections/PartnersPreview';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Heart } from 'lucide-react';
-import ImgPlaceholder from '../components/ui/ImgPlaceholder';
+import { ArrowRight } from 'lucide-react';
 
 function CelebrationBanner() {
   return (
